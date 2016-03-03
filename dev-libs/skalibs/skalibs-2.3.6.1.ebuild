@@ -6,7 +6,7 @@ EAPI=5
 
 inherit multilib
 
-DESCRIPTION="development files used for building software at skarnet.org: essentially general-purpose libraries"
+DESCRIPTION="general-purpose libraries used by software at skarnet.org"
 HOMEPAGE="http://www.skarnet.org/software/skalibs/index.html"
 SRC_URI="http://www.skarnet.org/software/${PN}/${P}.tar.gz"
 
