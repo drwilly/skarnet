@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit multilib
+EAPI=6
 
 DESCRIPTION="s6-linux-utils is a set of minimalistic Linux-specific system utilities."
 HOMEPAGE="http://www.skarnet.org/software/s6-portable-utils/"
@@ -25,6 +23,8 @@ RDEPEND="
 	!static? ( >=dev-libs/skalibs-${V_SKALIBS} )
 "
 
+HTML_DOCS="doc/*"
+
 src_configure() {
 	econf \
 		$(use_enable !static shared) \
@@ -38,9 +38,4 @@ src_configure() {
 		--sysdepdir=/usr/$(get_libdir)/${PN} \
 		--with-sysdeps=/usr/$(get_libdir)/skalibs \
 		--with-dynlib=/$(get_libdir)
-}
-
-src_install() {
-	default
-	dohtml -r doc/*
 }

@@ -4,7 +4,7 @@
 
 EAPI=6
 
-DESCRIPTION="s6-portable-utils is a set of Unix utilities, designed for embedded systems"
+DESCRIPTION="skarnet.org's small and secure supervision software suite"
 HOMEPAGE="http://www.skarnet.org/software/s6/"
 SRC_URI="http://www.skarnet.org/software/${PN}/${P}.tar.gz"
 
@@ -13,16 +13,27 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="static"
 
-V_SKALIBS="2.3.8.0"
+V_SKALIBS="2.4.0.0"
+V_EXECLINE="2.2.0.0"
 DEPEND="
 	>=sys-devel/make-3.81
-	static? ( >=dev-libs/skalibs-${V_SKALIBS}[static-libs] )
-	!static? ( >=dev-libs/skalibs-${V_SKALIBS} )
+	static? (
+		>=dev-libs/skalibs-${V_SKALIBS}[static-libs]
+		>=dev-lang/execline-${V_EXECLINE}[static-libs]
+	)
+	!static? (
+		>=dev-libs/skalibs-${V_SKALIBS}
+		>=dev-lang/execline-${V_EXECLINE}
+	)
 "
 RDEPEND="
-	!static? ( >=dev-libs/skalibs-${V_SKALIBS} )
+	!static? (
+		>=dev-libs/skalibs-${V_SKALIBS}
+		>=dev-lang/execline-${V_EXECLINE}
+	)
 "
 
+DOCS="AUTHORS examples README*"
 HTML_DOCS="doc/*"
 
 src_configure() {

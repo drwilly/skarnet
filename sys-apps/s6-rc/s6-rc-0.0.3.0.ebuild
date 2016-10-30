@@ -4,8 +4,8 @@
 
 EAPI=6
 
-DESCRIPTION="s6-portable-utils is a set of Unix utilities, designed for embedded systems"
-HOMEPAGE="http://www.skarnet.org/software/s6/"
+DESCRIPTION="s6-rc is a service manager for s6-based systems"
+HOMEPAGE="http://www.skarnet.org/software/s6-rc/"
 SRC_URI="http://www.skarnet.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
@@ -13,16 +13,31 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="static"
 
-V_SKALIBS="2.3.8.0"
+V_SKALIBS="2.3.10.0"
+V_EXECLINE="2.1.5.0"
+V_S6="2.3.0.0"
 DEPEND="
 	>=sys-devel/make-3.81
-	static? ( >=dev-libs/skalibs-${V_SKALIBS}[static-libs] )
-	!static? ( >=dev-libs/skalibs-${V_SKALIBS} )
+	static? (
+		>=dev-libs/skalibs-${V_SKALIBS}[static-libs]
+		>=dev-lang/execline-${V_EXECLINE}[static-libs]
+		>=sys-apps/s6-${V_S6}[static]
+	)
+	!static? (
+		>=dev-libs/skalibs-${V_SKALIBS}
+		>=dev-lang/execline-${V_EXECLINE}
+		>=sys-apps/s6-${V_S6}
+	)
 "
 RDEPEND="
-	!static? ( >=dev-libs/skalibs-${V_SKALIBS} )
+	!static? (
+		>=dev-libs/skalibs-${V_SKALIBS}
+		>=dev-lang/execline-${V_EXECLINE}
+		>=sys-apps/s6-${V_S6}
+	)
 "
 
+DOCS="examples/"
 HTML_DOCS="doc/*"
 
 src_configure() {

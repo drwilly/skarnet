@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit multilib
+EAPI=6
 
 DESCRIPTION="skarnet.org's small and secure supervision software suite"
 HOMEPAGE="http://www.skarnet.org/software/s6/"
@@ -35,6 +33,9 @@ RDEPEND="
 	)
 "
 
+DOCS="AUTHORS examples README*"
+HTML_DOCS="doc/*"
+
 src_configure() {
 	econf \
 		$(use_enable !static shared) \
@@ -47,11 +48,4 @@ src_configure() {
 		--datadir=/etc \
 		--with-sysdeps=/usr/$(get_libdir)/skalibs \
 		--with-dynlib=/$(get_libdir)
-}
-
-src_install() {
-	default
-# FIXME the examples/ subdirectory breaks all kinds of stuff when trying to install with pkgcore or paludis
-#	dodoc -r examples/
-	dohtml -r doc/*
 }

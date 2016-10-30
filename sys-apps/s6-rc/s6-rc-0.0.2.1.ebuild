@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit multilib
+EAPI=6
 
 DESCRIPTION="s6-rc is a service manager for s6-based systems"
 HOMEPAGE="http://www.skarnet.org/software/s6-rc/"
@@ -39,6 +37,9 @@ RDEPEND="
 	)
 "
 
+DOCS="examples/"
+HTML_DOCS="doc/*"
+
 src_configure() {
 	econf \
 		$(use_enable !static shared) \
@@ -51,10 +52,4 @@ src_configure() {
 		--datadir=/etc \
 		--with-sysdeps=/usr/$(get_libdir)/skalibs \
 		--with-dynlib=/$(get_libdir)
-}
-
-src_install() {
-	default
-	dodoc -r examples/
-	dohtml -r doc/*
 }

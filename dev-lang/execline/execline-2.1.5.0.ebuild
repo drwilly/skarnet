@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="static static-libs"
 
-V_SKALIBS="2.3.8.3"
+V_SKALIBS="2.3.10.0"
 DEPEND="
 	>=sys-devel/make-3.81
 	static? ( >=dev-libs/skalibs-${V_SKALIBS}[static-libs] )
