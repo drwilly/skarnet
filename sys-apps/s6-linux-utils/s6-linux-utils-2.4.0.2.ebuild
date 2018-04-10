@@ -2,12 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit multilib
-
-DESCRIPTION="s6-portable-utils is a set of Unix utilities, designed for embedded systems"
-HOMEPAGE="http://www.skarnet.org/software/s6/"
+DESCRIPTION="s6-linux-utils is a set of minimalistic Linux-specific system utilities."
+HOMEPAGE="http://www.skarnet.org/software/s6-portable-utils/"
 SRC_URI="http://www.skarnet.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
@@ -15,15 +13,17 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="static"
 
-V_SKALIBS="2.3.6.1"
+V_SKALIBS="2.6.0.2"
 DEPEND="
-	>=sys-devel/make-4.0
+	>=sys-devel/make-3.81
 	static? ( >=dev-libs/skalibs-${V_SKALIBS}[static-libs] )
 	!static? ( >=dev-libs/skalibs-${V_SKALIBS} )
 "
 RDEPEND="
 	!static? ( >=dev-libs/skalibs-${V_SKALIBS} )
 "
+
+HTML_DOCS="doc/*"
 
 src_configure() {
 	econf \
@@ -35,11 +35,7 @@ src_configure() {
 		--sbindir=/sbin \
 		--libdir=/usr/$(get_libdir)/${PN} \
 		--datadir=/etc \
+		--sysdepdir=/usr/$(get_libdir)/${PN} \
 		--with-sysdeps=/usr/$(get_libdir)/skalibs \
 		--with-dynlib=/$(get_libdir)
-}
-
-src_install() {
-	default
-	dohtml -r doc/*
 }

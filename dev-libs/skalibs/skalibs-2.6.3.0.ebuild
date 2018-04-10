@@ -26,8 +26,7 @@ src_configure() {
 		--dynlibdir=/$(get_libdir) \
 		--libdir=/usr/$(get_libdir)/${PN} \
 		--datadir=/etc \
-		--sysdepdir=/usr/$(get_libdir)/${PN} \
-		--enable-force-devr
+		--sysdepdir=/usr/$(get_libdir)/${PN}
 }
 
 src_install() {
