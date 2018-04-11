@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="static static-libs"
 
-V_SKALIBS="2.6.3.0"
+V_SKALIBS="2.6.4.0"
 V_EXECLINE="2.3.0.4"
 DEPEND="
 	>=sys-devel/make-3.81
